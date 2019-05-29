@@ -131,14 +131,16 @@ function update(){
     // colisions
     if (bX + 38 >= pipearr[i].x && 
         bX <= pipearr[i].x + 52 && 
-       (bY <= pipearr[i].y || (bY >= pipearr[i].y + space && bY <= pipearr[i].y + space + 200) || bY >= pipearr[i].y + space + 200 + space+26) && collide === false
+       (bY <= pipearr[i].y || (bY >= pipearr[i].y + space && bY <= pipearr[i].y + space + 200) || bY >= pipearr[i].y + space + 200 + space+26) && collide === false 
        ) {
          collide = true;
          lives--;
-      // console.log("collide");
     }
     else {
-      collide = false;
+      if (bX >= pipearr[i].x+52) {
+        collide = false;
+      }
+
     }
 
   }
