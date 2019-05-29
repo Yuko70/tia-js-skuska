@@ -58,7 +58,6 @@ function pressedKey(ev) {
     if (bY >= 10) {
       bY -= 10;
     }
-
   }
   else if (event.keyCode == '40') {
     // console.log("down"); 
@@ -79,6 +78,11 @@ function start() {
   timer = new Date().getTime();
   score = 0;
   requestAnimationFrame(update);
+  pipearr = [];
+  pipearr[0] = {
+      x : 400,
+      y : 200
+  };
 }
 
 
@@ -91,6 +95,10 @@ function ulives() {
   }
   if (lives === 0) {
     running = false;
+    ctxG.font = "30px Arial";
+    ctxG.fillText("You DIE", 80, 350);
+    ctxG.fillText("Your score" + score, 80, 390);
+    ctxG.fillText("Press Enter to start", 80, 430);
   }
 }
 
@@ -100,10 +108,10 @@ let tik = 0;
 let collide = false;
 
 let pipearr = [];
-pipearr[0] = {
-    x : 400,
-    y : 200
-};
+// pipearr[0] = {
+//     x : 400,
+//     y : 200
+// };
 
 function update(){
   if (new Date().getTime() - timer > 80) {
@@ -136,12 +144,10 @@ function update(){
     }
 
 
-
-
     // colisions
-    if (bX + 36 >= pipearr[i].x && 
-        bX <= pipearr[i].x + 52 && 
-       (bY <= pipearr[i].y || (bY >= pipearr[i].y + space && bY <= pipearr[i].y + space + 200) || bY >= pipearr[i].y + space + 200 + space-30) && collide === false 
+    if (bX + 35 >= pipearr[i].x && 
+        bX <= pipearr[i].x + 50 && 
+       (bY <= pipearr[i].y || (bY >= pipearr[i].y + space && bY <= pipearr[i].y + space + 200) || bY >= pipearr[i].y + space + 200 + space-25) && collide === false 
        ) {
          collide = true;
          lives--;
