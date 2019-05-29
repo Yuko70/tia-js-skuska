@@ -2,7 +2,19 @@ h1, h2 {
   font-family: Lato;
 }
 
-#bg, game {
+#bg {
+    position: absolute;
     display: block;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    z-index: 0;
+    left: 50%
+}
+
+
+#game {
+    position: absolute;
+    display: block;
+    /* margin: 0 auto; */
+    z-index: 1;
+    left: 50%
 }
