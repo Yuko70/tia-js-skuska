@@ -81,7 +81,7 @@ function start() {
 }
 let i = 0;
 function update(){
-  if (new Date().getTime() - timer > 1000) {
+  if (new Date().getTime() - timer > 100) {
     timer = new Date().getTime();
     i += 1;
     console.log(i);
