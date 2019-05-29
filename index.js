@@ -22,6 +22,7 @@ pipeMiddle.src = "https://raw.githubusercontent.com/yuko70/tia-js-skuska/master/
 
 let score = 0;
 let space = 100;
+let lives = 3;
 
 let bX = 50;
 let bY = 350; 
@@ -81,9 +82,19 @@ function start() {
 }
 
 
+function ulives() {
+  let xliv = 280;
+  let yliv = 10;
+  for (let i = 0; i < lives; i++) {
+    ctxG.drawImage(bird, xliv, yliv);
+    xliv += 40;
+  }
+}
+
 
 
 let tik = 0;
+let collide = false;
 
 let pipearr = [];
 pipearr[0] = {
@@ -95,10 +106,11 @@ function update(){
   if (new Date().getTime() - timer > 100) {
     timer = new Date().getTime();
     tik += 1;
-    console.log(tik);
+    // console.log(tik);
   }
 
   ctxG.clearRect(0, 0, cvsgame.width, cvsgame.height);
+  
 
   for (let i = 0; i < pipearr.length; i++) {
 
@@ -108,13 +120,27 @@ function update(){
     ctxG.drawImage(pipeDown, 0, 0, 52, 500, pipearr[i].x, pipearr[i].y + space +200+ space, 52, 500);
 
     pipearr[i].x--;
-    
+
     if (pipearr[i].x === 200) {
       pipearr.push({
         x : 400,
         y : Math.floor(Math.random() * 200) + 10  
         });
     }
+
+    // colisions
+    if (bX + 38 >= pipearr[i].x && 
+        bX <= pipearr[i].x + 52 && 
+       (bY <= pipearr[i].y || (bY >= pipearr[i].y + space && bY <= pipearr[i].y + space + 200) || bY >= pipearr[i].y + space + 200 + space+26) && collide === false
+       ) {
+         collide = true;
+         lives--;
+      // console.log("collide");
+    }
+    else {
+      // collide = false;
+    }
+
   }
 
 
@@ -122,7 +148,7 @@ function update(){
   ctxG.fillText("SCORE: " + score, 10, 35);
   ctxG.drawImage(bird, bX, bY);
 
-
+  ulives();
 
   if (running) {
     requestAnimationFrame(update);
