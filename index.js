@@ -12,6 +12,18 @@ let pipeDown = new Image();
 let pipeMiddle= new Image();
 
 
+bird.src = "https://raw.githubusercontent.com/yuko70/tia-js-skuska/master/bird.png";
+pipeUp.src = "https://raw.githubusercontent.com/yuko70/tia-js-skuska/master/pipeUp.png";
+pipeDown.src = "https://raw.githubusercontent.com/yuko70/tia-js-skuska/master/pipeDown.png";
+pipeMiddle.src = "https://raw.githubusercontent.com/yuko70/tia-js-skuska/master/pipeMiddle.png";
+
+
+let score = 0;
+let space = 150;
+
+let bX = 50;
+let bY = 350;
+
 start();
 
 function start() {
