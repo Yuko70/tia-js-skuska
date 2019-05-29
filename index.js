@@ -103,7 +103,7 @@ pipearr[0] = {
 };
 
 function update(){
-  if (new Date().getTime() - timer > 100) {
+  if (new Date().getTime() - timer > 80) {
     timer = new Date().getTime();
     tik += 1;
     // console.log(tik);
