@@ -17,12 +17,14 @@ pipeUp.src = "https://raw.githubusercontent.com/yuko70/tia-js-skuska/master/pipe
 pipeDown.src = "https://raw.githubusercontent.com/yuko70/tia-js-skuska/master/pipeDown.png";
 pipeMiddle.src = "https://raw.githubusercontent.com/yuko70/tia-js-skuska/master/pipeMiddle.png";
 
+// ctxG.drawImage(bird, bX, bY, 30, 30);
+
 
 let score = 0;
 let space = 150;
 
 let bX = 50;
-let bY = 350;
+let bY = 350; 
 
 let fly = new Audio();
 let boom = new Audio();
@@ -37,7 +39,6 @@ function start() {
   imageBG.src = 'https://raw.githubusercontent.com/yuko70/tia-js-skuska/master/math_flappy_bg.png';
   ctx.drawImage(imageBG, 0, 0, canvasbg.width, canvasbg.height);
 
-
-
+  ctxG.drawImage(bird, bX, bY, 38, 26);
 
 }
