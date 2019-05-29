@@ -22,19 +22,8 @@ pipeMiddle.src = "https://raw.githubusercontent.com/yuko70/tia-js-skuska/master/
 let sdDie = document.getElementById("s1");
 let sdWing = document.getElementById("s5");
 let sdSwoosh = document.getElementById("s4");
+let sdHit = document.getElementById("s2");
 
-
-let snd1  = new Audio();
-let src1  = document.createElement("source");
-src1.type = "audio/wav";
-src1.src  = "audio/Dombra.mp3";
-snd1.appendChild(src1);
-
-var snd2  = new Audio();
-var src2  = document.createElement("source");
-src2.type = "audio/wav";
-src2.src  = "audio/(TESBIHAT).mp3";
-snd2.appendChild(src2);
 
 
 let score = 0;
@@ -109,6 +98,7 @@ function start() {
 }
 
 function ulives() {
+  sdHit.play();
   let xliv = 280;
   let yliv = 10;
   for (let i = 0; i < lives; i++) {
@@ -116,6 +106,7 @@ function ulives() {
     xliv += 40;
   }
   if (lives === 0) {
+    sdDie.play();
     running = false;
     ctxG.font = "30px Arial";
     ctxG.fillText("You DIE", 80, 390);
@@ -177,7 +168,7 @@ function update(){
       if (bX >= pipearr[i].x+52 ) {
         collide = false;
       }
-      if (bX >= pipearr[i].x+52 && bX <= pipearr[i].x+53 && addscore === false && collide !== tr) {
+      if (bX >= pipearr[i].x+52 && bX <= pipearr[i].x+53 && addscore === false && collide !== true) {
         score += 5;
         addscore = true;
       }
