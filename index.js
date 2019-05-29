@@ -5,6 +5,9 @@ import './style.css';
 let cvsgame = document.getElementById("game");
 let ctxG = cvsgame.getContext("2d");
 
+let canvasbg = document.getElementById("bg");
+let ctx = canvasbg.getContext("2d");
+
 let bird = new Image();
 let fg = new Image();
 let pipeUp = new Image();
@@ -29,16 +32,47 @@ let bY = 350;
 let fly = new Audio();
 let boom = new Audio();
 
-start();
+// document.addEventListener('keydown', function(event) {
+//     // if(lastDownTarget == canvas) {
+//     //     alert('keydown');
+//     // }
+//     pressedKey(event);
+// }, false);
 
-function start() {
+document.onkeydown = pressedKey;
 
-  let canvasbg = document.getElementById("bg");
-  let ctx = canvasbg.getContext("2d");
+drawBG();
+
+function drawBG() {
+  
   let imageBG = new Image();
   imageBG.src = 'https://raw.githubusercontent.com/yuko70/tia-js-skuska/master/math_flappy_bg.png';
   ctx.drawImage(imageBG, 0, 0, canvasbg.width, canvasbg.height);
 
-  ctxG.drawImage(bird, bX, bY, 38, 26);  
+
+
+  ready();
 
 }
+
+function ready() {
+  ctxG.font = "30px Arial";
+  ctxG.fillText("Press Enter to start", 80, 350); 
+}
+
+function pressedKey(ev) {
+
+  let event = window.event ? window.event : ev;
+  console.log("keyDownA"); 
+
+   if (event.keyCode == '38') {
+        console.log("up");
+    }
+    else if (event.keyCode == '40') {
+        // down arrow
+        console.log("down");
+    }
+
+
+}
+
