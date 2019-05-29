@@ -52,26 +52,23 @@ function pressedKey(ev) {
   let event = window.event ? window.event : ev;
 
   if (event.keyCode == '38') {
-    console.log("up"); 
+    // console.log("up"); 
     if (bY >= 10) {
       bY -= 10;
     }
 
   }
   else if (event.keyCode == '40') {
-    console.log("down"); 
+    // console.log("down"); 
     if (bY <= 700-36) {
       bY += 10;
     }
   }
   else if (event.keyCode == '13' && running === false) {
-    console.log("enter");
-    
+    // console.log("enter");
     drawBG();
     start();
   }
-
-
 }
 
 
