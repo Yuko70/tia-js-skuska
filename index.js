@@ -1,7 +1,6 @@
 // Import stylesheets
 import './style.css';
 
-
 let cvsgame = document.getElementById("game");
 let ctxG = cvsgame.getContext("2d");
 
@@ -72,7 +71,6 @@ function pressedKey(ev) {
   }
 }
 
-
 function start() {
   running = true;
   timer = new Date().getTime();
@@ -83,8 +81,11 @@ function start() {
       x : 400,
       y : 200
   };
+  timer = 0;
+  lives = 3;
+  bX = 50;
+  bY = 350; 
 }
-
 
 function ulives() {
   let xliv = 280;
@@ -97,7 +98,7 @@ function ulives() {
     running = false;
     ctxG.font = "30px Arial";
     ctxG.fillText("You DIE", 80, 350);
-    ctxG.fillText("Your score" + score, 80, 390);
+    ctxG.fillText("Your score: " + score, 80, 390);
     ctxG.fillText("Press Enter to start", 80, 430);
   }
 }
