@@ -21,7 +21,7 @@ pipeDown.src = "https://raw.githubusercontent.com/yuko70/tia-js-skuska/master/pi
 pipeMiddle.src = "https://raw.githubusercontent.com/yuko70/tia-js-skuska/master/pipeMiddle.png";
 
 let score = 0;
-let space = 150;
+let space = 100;
 
 let bX = 50;
 let bY = 350; 
@@ -100,25 +100,26 @@ function update(){
 
   ctxG.clearRect(0, 0, cvsgame.width, cvsgame.height);
 
-
   for (let i = 0; i < pipearr.length; i++) {
 
     // void ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);  
-    ctxG.drawImage(pipeUp, 0, 0, 52, 500, pipearr[i].x, 0, 52, pipearr[i].y);
-    // ctxG.drawImage(pipeMiddle, pipearr[i].x,  pipearr[i].y + space, 52, 200);
-    // ctxG.drawImage(pipeDown, pipearr[i].x, 0, 52, pipearr[i].y);
+    ctxG.drawImage(pipeUp, 0, 0, 52, 500, pipearr[i].x, -500+pipearr[i].y, 52, 500);
+    ctxG.drawImage(pipeMiddle, 0, 0, 52, 200, pipearr[i].x, pipearr[i].y + space, 52, 200);
+    ctxG.drawImage(pipeDown, 0, 0, 52, 500, pipearr[i].x, pipearr[i].y + space +200+ space, 52, 500);
 
     pipearr[i].x--;
-
-    // if (pipearr[i].x === 200) {
-      
-    // }
+    
+    if (pipearr[i].x === 200) {
+      pipearr.push({
+        x : 400,
+        y : Math.floor(Math.random() * 200) + 10  
+        });
+    }
   }
 
 
   ctxG.font = "30px Arial";
   ctxG.fillText("SCORE: " + score, 10, 35);
-
   ctxG.drawImage(bird, bX, bY);
 
 
