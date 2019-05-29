@@ -89,6 +89,9 @@ function ulives() {
     ctxG.drawImage(bird, xliv, yliv);
     xliv += 40;
   }
+  if (lives === 0) {
+    running = false;
+  }
 }
 
 
@@ -114,6 +117,10 @@ function update(){
 
   for (let i = 0; i < pipearr.length; i++) {
 
+    if (pipearr[i].x === -53) {
+      pipearr.shift();
+    }
+
     // void ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);  
     ctxG.drawImage(pipeUp, 0, 0, 52, 500, pipearr[i].x, -500+pipearr[i].y, 52, 500);
     ctxG.drawImage(pipeMiddle, 0, 0, 52, 200, pipearr[i].x, pipearr[i].y + space, 52, 200);
@@ -128,15 +135,13 @@ function update(){
         });
     }
 
-    if (pipearr[i].x === -53) {
-      pipearr.shift();
-    }
+
 
 
     // colisions
-    if (bX + 38 >= pipearr[i].x && 
+    if (bX + 36 >= pipearr[i].x && 
         bX <= pipearr[i].x + 52 && 
-       (bY <= pipearr[i].y || (bY >= pipearr[i].y + space && bY <= pipearr[i].y + space + 200) || bY >= pipearr[i].y + space + 200 + space+26) && collide === false 
+       (bY <= pipearr[i].y || (bY >= pipearr[i].y + space && bY <= pipearr[i].y + space + 200) || bY >= pipearr[i].y + space + 200 + space-30) && collide === false 
        ) {
          collide = true;
          lives--;
