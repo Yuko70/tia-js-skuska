@@ -27,6 +27,7 @@ let bX = 50;
 let bY = 350; 
 
 let running = false;
+let timer = 0;
 
 let fly = new Audio();
 let boom = new Audio();
@@ -74,11 +75,16 @@ function pressedKey(ev) {
 
 function start() {
   running = true;
-
-  draw()
+  timer = new Date().getTime();
+  score = 0;
+  requestAnimationFrame(update);
 }
 
-function draw(){
+function update(){
+  if (new Date().getTime() - timer > 1000) {
+    timer = new Date().getTime();
+  }
+
   ctxG.clearRect(0, 0, cvsgame.width, cvsgame.height);
 
   ctxG.font = "30px Arial";
@@ -86,9 +92,11 @@ function draw(){
 
   ctxG.drawImage(bird, bX, bY);
 
-  console.log("test");
+  console.log(timer);
 
-    
-  requestAnimationFrame(draw);
+  if (running) {
+    requestAnimationFrame(update);
+  }
+  
     
 }
