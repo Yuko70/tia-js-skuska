@@ -24,6 +24,9 @@ let space = 150;
 let bX = 50;
 let bY = 350;
 
+let fly = new Audio();
+let boom = new Audio();
+
 start();
 
 function start() {
