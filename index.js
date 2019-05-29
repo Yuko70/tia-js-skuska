@@ -79,15 +79,32 @@ function start() {
   score = 0;
   requestAnimationFrame(update);
 }
-let i = 0;
+
+
+
+
+let tik = 0;
+
+let pipearr = [];
+pipearr[0] = {
+    x : 400,
+    y : 0
+};
+
 function update(){
   if (new Date().getTime() - timer > 100) {
     timer = new Date().getTime();
-    i += 1;
-    console.log(i);
+    tik += 1;
+    console.log(tik);
   }
 
   ctxG.clearRect(0, 0, cvsgame.width, cvsgame.height);
+
+
+  for (let i = 0; i < pipearr.length; i++) {
+    
+  }
+
 
   ctxG.font = "30px Arial";
   ctxG.fillText("SCORE: " + score, 10, 35);
