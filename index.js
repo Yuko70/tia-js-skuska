@@ -128,6 +128,11 @@ function update(){
         });
     }
 
+    if (pipearr[i].x === -53) {
+      pipearr.shift();
+    }
+
+
     // colisions
     if (bX + 38 >= pipearr[i].x && 
         bX <= pipearr[i].x + 52 && 
