@@ -138,7 +138,7 @@ function update(){
       // console.log("collide");
     }
     else {
-      // collide = false;
+      collide = false;
     }
 
   }
