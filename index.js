@@ -19,6 +19,24 @@ pipeUp.src = "https://raw.githubusercontent.com/yuko70/tia-js-skuska/master/pipe
 pipeDown.src = "https://raw.githubusercontent.com/yuko70/tia-js-skuska/master/pipeDown.png";
 pipeMiddle.src = "https://raw.githubusercontent.com/yuko70/tia-js-skuska/master/pipeMiddle.png";
 
+let sdDie = document.getElementById("s1");
+let sdWing = document.getElementById("s5");
+let sdSwoosh = document.getElementById("s4");
+
+
+let snd1  = new Audio();
+let src1  = document.createElement("source");
+src1.type = "audio/wav";
+src1.src  = "audio/Dombra.mp3";
+snd1.appendChild(src1);
+
+var snd2  = new Audio();
+var src2  = document.createElement("source");
+src2.type = "audio/wav";
+src2.src  = "audio/(TESBIHAT).mp3";
+snd2.appendChild(src2);
+
+
 let score = 0;
 let space = 100;
 let lives = 3;
@@ -56,12 +74,14 @@ function pressedKey(ev) {
     // console.log("up"); 
     if (bY >= 10) {
       bY -= 10;
+      sdWing.play();
     }
   }
   else if (event.keyCode == '40') {
     // console.log("down"); 
     if (bY <= 700-36) {
       bY += 10;
+      sdSwoosh.play();
     }
   }
   else if (event.keyCode == '13' && running === false) {
@@ -85,6 +105,7 @@ function start() {
   lives = 3;
   bX = 50;
   bY = 350; 
+  addscore = false;
 }
 
 function ulives() {
@@ -97,23 +118,21 @@ function ulives() {
   if (lives === 0) {
     running = false;
     ctxG.font = "30px Arial";
-    ctxG.fillText("You DIE", 80, 350);
-    ctxG.fillText("Your score: " + score, 80, 390);
-    ctxG.fillText("Press Enter to start", 80, 430);
+    ctxG.fillText("You DIE", 80, 390);
+    ctxG.fillText("Your score: " + score, 80, 430);
+    ctxG.fillText("Press Enter to start", 80, 470); 
   }
 }
 
-let sound = document.getElementById()
+
+
 
 
 let tik = 0;
 let collide = false;
 
 let pipearr = [];
-// pipearr[0] = {
-//     x : 400,
-//     y : 200
-// };
+let addscore = false;
 
 function update(){
   if (new Date().getTime() - timer > 80) {
@@ -157,7 +176,14 @@ function update(){
     else {
       if (bX >= pipearr[i].x+52 ) {
         collide = false;
-        // score += 5;
+      }
+      if (bX >= pipearr[i].x+52 && bX <= pipearr[i].x+53 && addscore === false && collide !== tr) {
+        score += 5;
+        addscore = true;
+      }
+
+      if (bX >= pipearr[i].x+53) {
+        addscore = false;
       }
 
     }
