@@ -98,7 +98,7 @@ function start() {
 }
 
 function ulives() {
-  sdHit.play();
+
   let xliv = 280;
   let yliv = 10;
   for (let i = 0; i < lives; i++) {
@@ -163,6 +163,7 @@ function update(){
        ) {
          collide = true;
          lives--;
+           sdHit.play();
     }
     else {
       if (bX >= pipearr[i].x+52 ) {
