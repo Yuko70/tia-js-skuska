@@ -6,8 +6,14 @@ import './style.css';
 // appDiv.innerHTML = `<h1>Flappy</h1>`;
 
 
-var c = document.getElementById("bg");
-var ctx = c.getContext("2d");
-ctx.moveTo(0, 0);
-ctx.lineTo(200, 100);
-ctx.stroke(); 
+let canvasbg = document.getElementById("bg");
+let ctx = canvasbg.getContext("2d");
+
+let imageBG = new Image();
+imageBG.src = 'https://raw.githubusercontent.com/yuko70/tia-js-skuska/master/math_flappy_bg.png';
+
+ctx.drawImage(imageBG, 0, 0, canvasbg.width, canvasbg.height);
+
+// image.onload=function(){
+  
+// };
