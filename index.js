@@ -88,7 +88,7 @@ let tik = 0;
 let pipearr = [];
 pipearr[0] = {
     x : 400,
-    y : 0
+    y : 200
 };
 
 function update(){
@@ -102,7 +102,17 @@ function update(){
 
 
   for (let i = 0; i < pipearr.length; i++) {
-    
+
+    // void ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);  
+    ctxG.drawImage(pipeUp, 0, 0, 52, 500, pipearr[i].x, 0, 52, pipearr[i].y);
+    // ctxG.drawImage(pipeMiddle, pipearr[i].x,  pipearr[i].y + space, 52, 200);
+    // ctxG.drawImage(pipeDown, pipearr[i].x, 0, 52, pipearr[i].y);
+
+    pipearr[i].x--;
+
+    // if (pipearr[i].x === 200) {
+      
+    // }
   }
 
 
