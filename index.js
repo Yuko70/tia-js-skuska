@@ -79,10 +79,12 @@ function start() {
   score = 0;
   requestAnimationFrame(update);
 }
-
+let i = 0;
 function update(){
   if (new Date().getTime() - timer > 1000) {
     timer = new Date().getTime();
+    i += 1;
+    console.log(i);
   }
 
   ctxG.clearRect(0, 0, cvsgame.width, cvsgame.height);
@@ -92,7 +94,7 @@ function update(){
 
   ctxG.drawImage(bird, bX, bY);
 
-  console.log(timer);
+
 
   if (running) {
     requestAnimationFrame(update);
