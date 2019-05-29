@@ -103,6 +103,7 @@ function ulives() {
   }
 }
 
+let sound = document.getElementById()
 
 
 let tik = 0;
@@ -154,8 +155,9 @@ function update(){
          lives--;
     }
     else {
-      if (bX >= pipearr[i].x+52) {
+      if (bX >= pipearr[i].x+52 ) {
         collide = false;
+        // score += 5;
       }
 
     }
